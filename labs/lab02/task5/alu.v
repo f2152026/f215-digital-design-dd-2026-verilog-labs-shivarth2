@@ -11,7 +11,6 @@
 //
 // Write your own tb.v, use it to find both problems, then fix this file
 // and re-test before submitting.
-
 module alu (
   input      [3:0] a,
   input      [3:0] b,
@@ -22,15 +21,15 @@ module alu (
   reg [3:0] b_inv;
   reg [3:0] b_twos;
 
-  always @(a, b) begin
+  always @(a, b, op) begin
     case (op)
       1'b0: begin
         result = a + b;                 // add
       end
       1'b1: begin
-        b_inv  <= ~b;                   // sub, via two's complement
-        b_twos <= b_inv + 1;
-        result <= a + b_twos;
+        b_inv  = ~b;                    // sub, via two's complement
+        b_twos = b_inv + 1;
+        result = a + b_twos;
       end
     endcase
   end
