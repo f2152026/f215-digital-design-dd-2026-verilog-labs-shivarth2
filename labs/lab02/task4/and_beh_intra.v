@@ -1,0 +1,10 @@
+// and_beh_intra.v
+module and_beh_intra (
+  input  a,
+  input  b,
+  output reg y
+);
+  always @(a or b) begin
+    y = #5 (a & b);   // evaluate a & b NOW, delay only the assignment
+  end
+endmodule
