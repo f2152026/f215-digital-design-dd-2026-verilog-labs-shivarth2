@@ -4,8 +4,16 @@
 module tb;
 
   // TODO: declare the inputs and outputs
+  reg  t_i0, t_i1, t_s;
+  wire t_y;
 
   // TODO: instantiate DUT here
+  DUT DUT (
+    .I0 (t_i0),
+    .I1 (t_i1),
+    .S  (t_s),
+    .Y  (t_y)
+  );
 
   // Waveform dump configuration (DO NOT CHANGE)
   string vcd_file;
@@ -18,7 +26,15 @@ module tb;
 
   initial begin
     // TODO: apply different input combinations
-
+    t_i0 = 0; t_i1 = 0; t_s = 0; #5;
+    t_i0 = 0; t_i1 = 0; t_s = 1; #5;
+    t_i0 = 0; t_i1 = 1; t_s = 0; #5;
+    t_i0 = 0; t_i1 = 1; t_s = 1; #5;
+    t_i0 = 1; t_i1 = 0; t_s = 0; #5;
+    t_i0 = 1; t_i1 = 0; t_s = 1; #5;
+    t_i0 = 1; t_i1 = 1; t_s = 0; #5;
+    t_i0 = 1; t_i1 = 1; t_s = 1; #5;
+    $finish;
   end
 
   initial
